@@ -1,0 +1,70 @@
+{{ include('admin/messages.html.twig') }}
+
+<form method="post">
+    <div class="form-group">
+        <label >Parentid</label>
+        <select name="product[category_id]"  class="form-control">
+            {% if (catname) %}
+            <option value="{{product.categoryid }}">{{catname[0].title}}</option>
+            {% endif %}
+
+            {% for cat in catlist %}
+                <option value="{{ cat.id }}">{{ cat.title }}</option>
+            {% endfor %}
+
+        </select>
+
+    </div>
+    <div class="form-group">
+        <label >Title</label>
+        <input type="text" name="product[title]" value="{{ product.title }}" class="form-control"  >
+    </div>
+
+
+    <div class="form-group">
+        <label >Keywords</label>
+        <input type="text" name="product[keywords]" value="{{ product.keywords }}" class="form-control">
+    </div>
+
+    <div class="form-group">
+    <label >Alış Fiyatı </label>
+    <input type="text" name="product[keywords]" value="{{ product.price }}" class="form-control">
+    </div>
+
+
+    <div class="form-group">
+        <label >Description</label>
+        <input type="text" name="product[price]" value="{{ product.description }}" class="form-control">
+    </div>
+
+    <div class="form-group">
+        <label >Satış Fiyatı</label>
+        <input type="text" name="product[sprice]" value="{{ product.sprice }}" class="form-control">
+    </div>
+
+    <div class="form-group">
+        <label >Miktar</label>
+        <input type="text" name="product[amount]" value="{{ product.amount }}" class="form-control">
+    </div>
+
+    <div class="form-group">
+        <label >status</label>
+        <select name="product[status]"  class="form-control">
+            <option>{{ product.status }}</option>
+            <option>True</option>
+            <option>False</option>
+
+        </select>
+    </div><br>
+
+
+
+    <div class="form-group">
+        <label class="col-sm-2 control-label">Detay</label>
+        <textarea name="product[detail]" id="detail" row="10" cols="100">{{ product.status }} </textarea>
+    </div>
+
+
+
+    <button type="submit" class="btn btn-primary">Kaydet</button>
+</form>

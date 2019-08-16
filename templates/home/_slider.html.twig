@@ -1,0 +1,124 @@
+<section  class="homepage-slider" id="home-slider">
+    <div class="flexslider">
+        <ul class="slides">
+            {% for rs in sliders %}
+            <li>
+                <a href="{{ path('product_detail', {'id': rs.id}) }}">
+                    <img src="{{ asset('uploads') }}/images/{{ rs.image }}" alt=""width="960px" height="330" /></a>
+                <div class="intro">
+                    <h1>{{rs.title }}</h1>
+                    <h1>{{ rs.description }}</h1>
+
+                </div>
+            </li>
+
+            {% endfor %}
+        </ul>
+    </div>
+</section>
+
+<section class="main-content">
+    <div class="row">
+        <div class="span12">
+            <div class="row">
+                <div class="span12">
+                    <h4 class="title">
+                        <span class="pull-left"><span class="text"><span class="line">ÇOK <strong>SATANLAR</strong></span></span></span>
+                        <span class="pull-right">
+										<a class="left button" href="#myCarousel" data-slide="prev"></a><a class="right button" href="#myCarousel" data-slide="next"></a>
+									</span>
+                    </h4>
+                    <div id="myCarousel" class="myCarousel carousel slide">
+                        <div class="carousel-inner">
+                            <div class="active item">
+                                <ul class="thumbnails">
+
+                                    {% for rs in products %}
+
+                                    <li class="span3">
+                                        <div class="product-box">
+                                            <span class="sale_tag"></span>
+                                            <p><a href="{{ path('product_detail',{'id':rs.id}) }}"><img src="{{ asset('uploads') }}/images/{{ rs.image }}" alt=""></a></p>
+                                            <a href="product_detail.html" class="title">{{ rs.title }}</a><br>
+                                            <p class="price">{{ rs.sprice }} TL</p>
+                                        </div>
+                                    </li>
+                                    {% endfor %}
+
+                                </ul>
+
+                            </div>
+                            <div class="item">
+                                <ul class="thumbnails">
+                                    {% for rs in product %}
+
+                                        <li class="span3">
+                                            <div class="product-box">
+                                                <span class="sale_tag"></span>
+                                                <p><a href="{{ path('product_detail',{'id':rs.id}) }}"><img src="{{ asset('uploads') }}/images/{{ rs.image }}" alt=""></a></p>
+                                                <a href="product_detail.html" class="title">{{ rs.title }}</a><br>
+                                                <p class="price">{{ rs.sprice }} TL</p>
+                                            </div>
+                                        </li>
+                                    {% endfor %}
+
+
+
+
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <br/>
+            <div class="row">
+                <div class="span12">
+                    <h4 class="title">
+                        <span class="pull-left"><span class="text"><span class="line">YENİ <strong>ÜRÜNLER</strong></span></span></span>
+                        <span class="pull-right">
+										<a class="left button" href="#myCarousel-2" data-slide="prev"></a><a class="right button" href="#myCarousel-2" data-slide="next"></a>
+									</span>
+                    </h4>
+                    <div id="myCarousel-2" class="myCarousel carousel slide">
+                        <div class="carousel-inner">
+                            <div class="active item">
+                                <ul class="thumbnails">
+                                    {% for rs in producta %}
+
+                                        <li class="span3">
+                                            <div class="product-box">
+                                                <span class="sale_tag"></span>
+                                                <p><a href="{{ path('product_detail',{'id':rs.id}) }}"><img src="{{ asset('uploads') }}/images/{{ rs.image }}" alt=""></a></p>
+                                                <a href="product_detail.html" class="title">{{ rs.title }}</a><br>
+                                                <p class="price">{{ rs.sprice }} TL</p>
+                                            </div>
+                                        </li>
+                                    {% endfor %}
+
+
+                                </ul>
+                            </div>
+                            <div class="item">
+                                <ul class="thumbnails">
+
+                                    {% for rs in productb %}
+
+                                        <li class="span3">
+                                            <div class="product-box">
+                                                <span class="sale_tag"></span>
+                                                <p><a href="{{ path('product_detail',{'id':rs.id}) }}"><img src="{{ asset('uploads') }}/images/{{ rs.image }}" alt=""></a></p>
+                                                <a href="product_detail.html" class="title">{{ rs.title }}</a><br>
+                                                <p class="price">{{ rs.sprice }} TL</p>
+                                            </div>
+                                        </li>
+                                    {% endfor %}
+
+
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            {% block slider %}  {% endblock %}

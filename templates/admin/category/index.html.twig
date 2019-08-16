@@ -1,0 +1,71 @@
+{% extends 'adminbase.html.twig' %}
+
+{% block title %}Kategori Listesi{% endblock %}
+
+{% block content %}
+    <div id="page-wrapper" >
+        <div id="page-inner">
+            <div class="row">
+                <div class="col-md-12">
+                    <h2>Kategori Listesi
+                        <button type="button" class="btn btn-outline-danger"><a href="{{ path('admin_category_new') }}">Kategori Ekle</a></button>
+
+                    </h2>
+                </div>
+                <div class="col-md-6">
+                    <div class="table-responsive">
+                        <table class="table">
+                            <thead>
+                            <tr>
+                                <th>Id</th>
+                                <th>Parentid</th>
+                                <th>Title</th>
+                                <th>Keywords</th>
+                                <th>Description</th>
+                                <th>Status</th>
+                                <th>Göster</th>
+                                <th>Düzenle</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            {% for category in categories %}
+                                <tr>
+                                    <td>{{ category.id }}</td>
+                                    <td>{{ category.parentid }}</td>
+                                    <td>{{ category.title }}</td>
+                                    <td>{{ category.keywords }}</td>
+                                    <td>{{ category.description }}</td>
+                                    <td>{{ category.status }}</td>
+                                    <td>
+                                        <a href="{{ path('admin_category_show', {'id': category.id}) }}" button type="button" class="btn btn-primary btn-sm">Göster</a>
+                                    </td>
+                                    <td>
+                                        <a href="{{ path('admin_category_edit', {'id': category.id,'pid':category.parentid}) }}" button type="button" class="btn btn-info btn-sm">Düzenle</a>
+                                    </td>
+                                </tr>
+                            {% else %}
+                                <tr>
+                                    <td colspan="7">no records found</td>
+                                </tr>
+                            {% endfor %}
+                            </tbody>
+                        </table>
+
+
+                    </div>
+                </div>
+            </div>
+
+            <!-- /. ROW  -->
+            <hr />
+
+            <!-- /. ROW  -->
+        </div>
+        <!-- /. PAGE INNER  -->
+    </div>
+
+
+    <!-- /. PAGE WRAPPER  -->
+
+{% endblock %}
+

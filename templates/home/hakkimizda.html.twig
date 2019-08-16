@@ -1,0 +1,26 @@
+{% extends 'frontbase.html.twig' %}
+
+{% block title %}Hakkımızda {{ data[0].title }}{% endblock %}
+{% block keywords %}{{ data[0].keywords }}{% endblock %}
+{% block description %}{{ data[0].description }}{% endblock %}
+
+{% block sidebar %} {{ include('home/_sidebar.html.twig') }} {% endblock %}
+
+
+{% block body %}
+    <div class="row-fluid">
+        <div class="span12">
+
+            <p>
+                {{ data[0].aboutus|raw }}
+            </p>
+            <div class="row-fluid"></div>
+        </div>
+    </div>
+{% endblock %}
+
+
+
+
+
+

@@ -1,0 +1,74 @@
+{% extends 'adminbase.html.twig' %}
+
+{% block title %}Mesaj Listesi{% endblock %}
+
+{% block content %}
+    <div id="page-wrapper" >
+        <div id="page-inner">
+            <div class="row">
+                <div class="col-md-12">
+                    <h2>Mesaj Listesi
+
+                    </h2>
+                </div>
+                <div class="col-md-6">
+                    <div class="table-responsive">
+
+                        <table class="table">
+                            <thead>
+                            <tr>
+                                <th>Id</th>
+                                <th>Name</th>
+                                <th>Email</th>
+                                <th>Subject</th>
+                                <th>Message</th>
+                                <th>Comment</th>
+                                <th>Status</th>
+                                <th>actions</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            {% for message in messages %}
+                                <tr>
+                                    <td>{{ message.id }}</td>
+                                    <td>{{ message.name }}</td>
+                                    <td>{{ message.email }}</td>
+                                    <td>{{ message.subject }}</td>
+                                    <td>{{ message.message }}</td>
+                                    <td>{{ message.comment }}</td>
+                                    {% if message.status==null %}
+                                    <td>Yeni Mesaj</td>
+                                    {% else %}
+                                    <td>{{ message.status }}</td>
+                                        {% endif %}
+                                    <td>
+                                        <a href="javascript:openWin('{{ path('admin_messages_show', {'id': message.id}) }}','','toolbar=no,location=no,directories=0,status=no,top=100,left=200,menubar=no,scrollBars=no,resizable=no,width=1000,height=750');"" button type="button" class="btn btn-primary btn-sm">Mesajı Oku</a>
+
+                                    </td>
+                                </tr>
+                            {% else %}
+                                <tr>
+                                    <td colspan="8">no records found</td>
+                                </tr>
+                            {% endfor %}
+                            </tbody>
+                        </table>
+
+                    </div>
+                </div>
+            </div>
+
+            <!-- /. ROW  -->
+            <hr />
+
+            <!-- /. ROW  -->
+        </div>
+        <!-- /. PAGE INNER  -->
+    </div>
+
+
+    <!-- /. PAGE WRAPPER  -->
+
+{% endblock %}
+
+

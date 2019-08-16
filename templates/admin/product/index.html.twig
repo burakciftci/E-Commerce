@@ -1,0 +1,103 @@
+{% extends 'adminbase.html.twig' %}
+
+{% block title %}Ürün Listesi{% endblock %}
+
+{% block content %}
+    <div id="page-wrapper" >
+        <div id="page-inner">
+            <div class="row">
+                <div class="col-md-12">
+                    <h2>Ürün Listesi
+                        <button type="button" class="btn btn-outline-danger"><a href="{{ path('admin_product_new') }}">Ürün Ekle</a></button>
+
+                    </h2>
+                </div>
+                <div class="col-md-6">
+                    <div class="table-responsive">
+                        <table class="table">
+                            <thead>
+                            <tr>
+                                <th>Id</th>
+                                <th>Title</th>
+                                <th>Amount</th>
+                                <th>Price</th>
+                                <th>Sprice</th>
+                                <th>Min</th>
+                                <th>Image</th>
+                                <th>Gallery</th>
+                                <th>Category_id</th>
+                                <th>Status</th>
+                                <th>Göster</th>
+                                <th>Düzenle</th>
+                                <th>Sil</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            {% for product in products %}
+                                <tr>
+                                    <td>{{ product.id }}</td>
+                                    <td>{{ product.title }}</td>
+                                    <td>{{ product.amount }}</td>
+                                    <td>{{ product.price }}</td>
+                                    <td>{{ product.sprice }}</td>
+                                    <td>{{ product.min }}</td>
+
+
+                                    <td>
+
+                                        <a href="javascript:openWin('{{ path('admin_product_iedit', {'id': product.id}) }}','','toolbar=no,location=no,directories=0,status=no,top=100,left=200,menubar=no,scrollBars=no,resizable=no,width=1000,height=750');">
+                                            {% if product.image == null %}
+                                           <img src="{{ url('admin') }}/img/image.png" height="32">
+                                        {% else %}
+                                            <img src="{{ asset('uploads') }}/images/{{ product.image }}" height="40">
+
+                                        {% endif %}
+                                        </a>
+
+                                    </td>
+
+
+
+                                    <td>
+                                        <a href="javascript:openWin('{{ path('admin_image_new', {'pid': product.id}) }}','','toolbar=no,location=no,directories=0,status=no,top=100,left=200,menubar=no,scrollBars=no,resizable=no,width=1000,height=750');">
+                                        <img src="{{ url('admin') }}/img/gallery.png" height="32">
+                                        </a>
+                                    </td>
+                                    <td>{{ product.categoryId }}</td>
+
+                                    <td>{{ product.status }}</td>
+                                    <td>
+                                        <a href="{{ path('admin_product_show', {'id': product.id}) }}" button type="button" class="btn btn-primary btn-sm">Göster</a></td>
+
+                                    <td>
+                                        <a href="{{ path('admin_product_edit', {'id': product.id}) }}"button type="button" class="btn btn-info btn-sm">Düzenle</a></td>
+                                    <td>{{ include('admin/product/_delete_form.html.twig') }}</td>
+
+
+                                </tr>
+                            {% else %}
+                                <tr>
+                                    <td colspan="17">no records found</td>
+                                </tr>
+                            {% endfor %}
+                            </tbody>
+                        </table>
+
+                    </div>
+                </div>
+            </div>
+
+            <!-- /. ROW  -->
+            <hr />
+
+            <!-- /. ROW  -->
+        </div>
+        <!-- /. PAGE INNER  -->
+    </div>
+
+
+    <!-- /. PAGE WRAPPER  -->
+
+{% endblock %}
+
+

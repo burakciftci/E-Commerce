@@ -1,0 +1,74 @@
+{% extends 'frontbase.html.twig' %}
+
+
+{% block title %}SEPET BİLGİLERİ{% endblock %}
+
+
+{% block sidebar %} {{ include('home/_sidebar.html.twig') }} {% endblock %}
+
+
+
+{% block body %}
+
+    <div class="row-fluid">
+        <div class="span9">
+
+            <div class="span4">
+
+                {% block usersidebar %} {{ include('home/_usersidebar.html.twig') }} {% endblock %}
+            </div>
+
+            <div class="span5">
+                <h5>SEPET BİLGİLER</h5>
+
+                {{ include('messages.html.twig') }}
+
+                <table class="table">
+                    <thead>
+                    <tr>
+                        <th>Id</th>
+                        <th>ÜRÜN ADI</th>
+                        <th>SATIŞ ÜCRETİ</th>
+                        <th>MİKTARI</th>
+                        <th>TOPLAM</th>
+                        <th>actions</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    {% set total=0 %}
+                    {% for shopcart in shopcarts %}
+                        <tr>
+                            <td>{{ shopcart.id }}</td>
+                            <td>{{ shopcart.title }}</td>
+                            <td>{{ shopcart.sprice }}</td>
+                            <td>{{ shopcart.quantity }}</td>
+                            <td>{{ shopcart.quantity * shopcart.sprice}}</td>
+                            <td><a href="{{ path('shopcart_del',{'id':shopcart.id}) }}" onclick="return confirm('Veriler Silinecek Emin misiniz?');" class="btn btn-secondary btn-lg active" role="button" aria-pressed="true">SİL</a></td>
+                        </tr>
+                        {% set total=total+(shopcart.quantity * shopcart.sprice) %}
+                    {% else %}
+                        <tr>
+                            <td colspan="5">no records found</td>
+                        </tr>
+                    {% endfor %}
+                    <tr>
+                        <td colspan="5">
+                            Toplam Alışveriş Tutarı:{{ total }} TL
+                        </td>
+                    </tr>
+                    </tbody>
+
+                </table>
+                {% if total!=null %}
+
+                <a href="{{ path('orders_new') }}" class="btn-btn-block btn-success btn-large">ÜRÜNLERİ SATINAL</a>
+                {% endif %}
+            </div>
+
+            <div class="row-fluid"></div>
+        </div>
+    </div>
+
+
+
+{% endblock %}

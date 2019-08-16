@@ -1,0 +1,54 @@
+{% extends 'frontbase.html.twig' %}
+
+{% block title %} {{ data[0].title }}{% endblock %}
+{% block keywords %}{{ data[0].keywords }}{% endblock %}
+{% block description %}{{ data[0].description }}{% endblock %}
+
+{% block sidebar %} {{ include('home/_sidebar.html.twig') }} {% endblock %}
+
+
+{% block body %}
+    <div class="row-fluid">
+        <div class="span12"></div>
+    </div>
+    <div class="row">
+        <div class="span12">
+            <h4 class="title">
+                <span class="pull-left"><span class="text"><span class="line">{{ data[0].title }}</span></span></span>
+                <span class="pull-right"><a class="left button" href="#myCarousel" data-slide="prev"></a><a class="right button" href="#myCarousel" data-slide="next"></a></span>
+            </h4>
+            <div id="myCarousel-1" class="carousel slide">
+
+                <div class="carousel-inner">
+                    <div class="active item">
+
+                        <ul class="thumbnails listing-products">
+
+                            {% for rs in products %}
+                            <li class="span3" >
+                                <div class="product-box"  >
+                                    <span class="sale_tag"></span>
+                                    <p><a href="{{ path('product_detail',{'id':rs.id}) }}"><img src="{{ asset('uploads') }}/images/{{ rs.image }}" alt=""></a></p>
+                                    <a href="product_detail.html" class="title">{{ rs.title }}</a><br>
+                                    <p class="price">{{ rs.sprice }} TL</p>
+                                </div>
+
+                            </li>
+                            {% endfor %}
+                        </ul>
+
+
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+{% endblock %}
+
+
+
+
+
+

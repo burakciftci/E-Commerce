@@ -1,0 +1,89 @@
+{% extends 'frontbase.html.twig' %}
+
+{% block title %} {{ data[0].title }}{% endblock %}
+{% block keywords %}{{ data[0].keywords }}{% endblock %}
+{% block description %}{{ data[0].description }}{% endblock %}
+
+{% block sidebar %} {{ include('home/_sidebar.html.twig') }} {% endblock %}
+
+
+{% block body %}
+    <section class="header_text sub">
+         <h4><span>ÜRÜN DETAY</span></h4>
+    </section>
+    <section class="main-content">
+        <div class="row">
+            <div class="span9">
+                <div class="row">
+
+                    <div class="span4">
+
+                        <a href="{{ asset('uploads') }}/images/{{ data[0].image }}" class="thumbnail" data-fancybox-group="group1" title="{{ data[0].title}}"><img  src="{{ asset('uploads') }}/images/{{ data[0].image }}" alt=""></a>
+                        <ul class="thumbnails small">
+
+                            {% for rs in images %}
+
+                                <li class="span1">
+                                    <a href="{{ asset('uploads') }}/images/{{ rs.image }}" class="thumbnail" data-fancybox-group="group1" title=""><img src="{{ asset('uploads') }}/images/{{ rs.image }}" alt=""></a>
+                                </li>
+
+                            {% endfor %}
+
+
+                        </ul>
+                    </div>
+
+                    <div class="span5">
+                        <h4>{{ data[0].title }}</h4>
+
+
+                        <form name="shopcart" class="form-horizontal" action="{{ path('shopcart_new') }}" method="post">
+                            <div class="form-horizontal">
+                                <label class="control"><span><h4>Fiyatı :{{ data[0].sprice }} TL</h4></span></label>
+                                <br>
+                                <label class="control"><h4>Alcağınız Adet</h4></label>
+                                <input type="number" name="shopcart[quantity]" class="span6" value="1" placeholder="Qty" max="{{ data[0].amount }}">
+                                <input type="hidden" name="shopcart[productid]" value="{{ data[0].id }}">
+                            </div>
+
+                            <h4>{{ data[0].amount }} Adet stokta mevcut</h4>
+                            <p>{{ data[0].description }}</p>
+                            <input type="hidden" name="token" value="{{ csrf_token('add-item') }}">
+                            <button class="btn btn-default add-to-cart" type="submit" class="shopBtn"><span class="icon-shopping-cart"></span>SEPETE EKLE</button>
+
+                        </form>
+
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="span9">
+                        <ul class="nav nav-tabs" id="myTab">
+                            <li class="active"><a href="#home">AÇIKLAMA</a></li>
+                            <li class=""><a href="#profile">Additional Information</a></li>
+                        </ul>
+                        <div class="tab-content">
+                            <div class="tab-pane active" id="home" >
+                                {{ data[0].detail|raw }}
+                            </div>
+                            <div class="tab-pane" id="profile">
+                                <table class="table table-striped shop_attributes">
+                                    <tbody>
+                                    <tr class="">
+                                        <th>{{ data[0].description }}</th>
+
+                                    </tr>
+                                    <tr class="alt">
+                                        <th>{{ data[0].year }}</th>
+
+                                    </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+{% endblock %}

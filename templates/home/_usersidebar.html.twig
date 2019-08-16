@@ -1,0 +1,21 @@
+
+<nav class="navigation">
+    <ul class="main-menu">
+
+        {{ include('messages.html.twig') }}
+
+        <strong><h3>{{ app.user.name }}</h3></strong>
+
+        <li><a href="{{ path('userpanel') }}">Bilgilerim</a></li>
+        <li><a href="{{ path('userpanel_edit') }}">Düzenle</a></li>
+        <li><a href="{{ path('orders_index') }}">Siparişlerim</a></li>
+        <li><a href="{{ path('shopcart_index') }}">Sepetim</a></li>
+
+
+
+    </ul>
+
+</nav>
+
+{% block usersidebar %}
+{% endblock %}

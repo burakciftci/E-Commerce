@@ -1,0 +1,55 @@
+<section id="footer-bar">
+    <div class="row">
+        <div class="span3">
+            <h4>Navigation</h4>
+            <ul class="nav">
+                <li><a href="">Anasayfa</a></li>
+                <li><a href="{{ path('hakkimizda') }}">Hakkımızda</a></li>
+                <li><a href="./contact.html">İletişim</a></li>
+                <li><a href="./cart.html">Your Cart</a></li>
+                <li><a href="./register.html">Login</a></li>
+            </ul>
+        </div>
+        <div class="span4">
+            <h4>Hesabım</h4>
+            <ul class="nav">
+                <li><a href="{{ path('userpanel') }}">Bilgilerim</a></li>
+                <li><a href="{{ path('userpanel_edit') }}">Profil Düzenle</a></li>
+                <li><a href="{{ path('orders_index') }}">Siparişlerin</a></li>
+
+            </ul>
+        </div>
+        <div class="span5">
+            <p class="logo"><img src="themes/images/logo2.jpg" class="site_logo" alt=""></p>
+            <br/>
+            <span class="social_icons">
+							<a class="facebook" href="#">Facebook</a>
+							<a class="twitter" href="#">Twitter</a>
+							<a class="skype" href="#">Skype</a>
+							<a class="vimeo" href="#">Vimeo</a>
+						</span>
+        </div>
+    </div>
+</section>
+<section id="copyright">
+    <span>Copyright 2013 bootstrappage template  All right reserved.</span>
+</section>
+</div>
+<script src="themes/js/common.js"></script>
+<script src="themes/js/jquery.flexslider-min.js"></script>
+<script type="text/javascript">
+    $(function() {
+        $(document).ready(function() {
+            $('.flexslider').flexslider({
+                animation: "fade",
+                slideshowSpeed: 4000,
+                animationSpeed: 600,
+                controlNav: false,
+                directionNav: true,
+                controlsContainer: ".flex-container" // the container that holds the flexslider
+            });
+        });
+    });
+</script>
+
+{% block footer %} {% endblock %}

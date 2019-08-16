@@ -1,0 +1,96 @@
+
+
+
+{% extends 'frontbase.html.twig' %}
+
+
+
+
+
+{% block title %}İletişim {{ data[0].title }}{% endblock %}
+{% block keywords %}{{ data[0].keywords }}{% endblock %}
+{% block description %}{{ data[0].description }}{% endblock %}
+
+{% block sidebar %} {{ include('home/_sidebar.html.twig') }} {% endblock %}
+
+{% block body %}
+    {{ include('messages.html.twig') }}
+    <div class="row-fluid">
+        <div class="span12">
+
+
+
+            <div class="row-fluid"></div>
+        </div>
+
+    </div>
+
+    <section class="header_text sub">
+
+        <h4><span>Bize Ulaşın</span></h4>
+
+
+    </section>
+    <section class="main-content">
+        <div class="row">
+            <div class="span5">
+                <div>
+                    <h5>İLETİŞİM BİLGİLERİ</h5>
+                    <p>
+                        {{ data[0].contact|raw }}
+                    </p>
+
+
+                </div>
+            </div>
+            <div class="span7">
+
+                <p> Soru,görüş ve düşünceleriniz için bizimle iletişime geçin</p>
+                <form method="post"  name="messages">
+                    <fieldset>
+
+                        <div class="clearfix">
+                            <label for="name"><span>İsim Soyisim:</span></label>
+                            <div class="input">
+                                <input tabindex="1" size="18" id="name" name="messages[name]" type="text" value="" class="input-xlarge" placeholder="Name">
+                            </div>
+                        </div>
+
+                        <div class="clearfix">
+                            <label for="email"><span>Email:</span></label>
+                            <div class="input">
+                                <input tabindex="2" size="25" id="email" name="messages[email]" type="text" value="" class="input-xlarge" placeholder="Email Address">
+                            </div>
+                        </div>
+                        <div class="clearfix">
+                            <label for="name"><span>Konu:</span></label>
+                            <div class="input">
+                                <input tabindex="1" size="18" id="name" name="messages[subject]" type="text" value="" class="input-xlarge" placeholder="Subject">
+                            </div>
+                        </div>
+
+
+
+                        <div class="clearfix">
+                            <label for="message"><span>Mesaj:</span></label>
+                            <div class="input">
+                                <textarea tabindex="3" class="input-xlarge" id="message" name="messages[message]" rows="7" placeholder="Message"></textarea>
+                            </div>
+                        </div>
+
+                        <div class="actions">
+                            <input type="hidden" name="token" value="{{ csrf_token('form-messeage') }}"/>
+                            <button tabindex="3" type="submit" class="btn btn-inverse">Mesaj Gönder</button>
+                        </div>
+                    </fieldset>
+                </form>
+            </div>
+        </div>
+    </section>
+{% endblock %}
+
+
+
+
+
+

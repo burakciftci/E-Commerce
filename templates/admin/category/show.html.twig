@@ -1,0 +1,65 @@
+{% extends 'adminbase.html.twig' %}
+
+{% block title %}Kategori Görüntüleme{% endblock %}
+
+{% block content %}
+    <div id="page-wrapper" >
+        <div id="page-inner">
+            <div class="row">
+                <div class="col-md-12">
+                    <h2>Kategori Listesi
+
+                    </h2>
+                </div>
+                <div class="col-md-6">
+                    <div class="table-responsive">
+                        <table class="table">
+                            <tbody>
+                            <tr>
+                                <th>Id</th>
+                                <td>{{ category.id }}</td>
+                            </tr>
+                            <tr>
+                                <th>Parentid</th>
+                                <td>{{ category.parentid }}</td>
+                            </tr>
+                            <tr>
+                                <th>Title</th>
+                                <td>{{ category.title }}</td>
+                            </tr>
+                            <tr>
+                                <th>Keywords</th>
+                                <td>{{ category.keywords }}</td>
+                            </tr>
+                            <tr>
+                                <th>Description</th>
+                                <td>{{ category.description }}</td>
+                            </tr>
+                            <tr>
+                                <th>Status</th>
+                                <td>{{ category.status }}</td>
+                            </tr>
+                            </tbody>
+                        </table>
+
+                        <a href="{{ path('admin_category_index') }}"class="btn btn-primary btn-lg active" role="button" aria-pressed="true">Liste Görüntüle</a>
+
+                        <a href="{{ path('admin_category_edit',{'id':category.id,'pid':category.parentid}) }}"class="btn btn-inverse btn-lg active" role="button" aria-pressed="true">Düzenle</a>
+
+                    </div>
+                </div>
+            </div>
+
+            <!-- /. ROW  -->
+            <hr />
+
+            <!-- /. ROW  -->
+        </div>
+        <!-- /. PAGE INNER  -->
+    </div>
+
+
+    <!-- /. PAGE WRAPPER  -->
+
+{% endblock %}
+

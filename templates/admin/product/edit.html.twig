@@ -1,0 +1,42 @@
+{% extends 'adminbase.html.twig' %}
+
+{% block title %}Product Düzenle{% endblock %}
+
+{% block content %}
+
+    <div id="page-wrapper" >
+        <div id="page-inner">
+            <div class="row">
+                <div class="col-md-12">
+
+                    {{ include('admin/messages.html.twig')}}
+                    {{ include('admin/product/_form.html.twig', {'button_label': 'Güncelle'}) }}
+
+                    <script>
+                        ClassicEditor
+                            .create(document.querySelector('#detail'))
+                            .catch(error => {
+                                console.error(error)
+
+                            })
+                    </script>
+
+                    <a href="{{ path('admin_product_index') }}">Listeye geri dön</a>
+
+                    {{ include('admin/product/_delete_form.html.twig') }}
+                    <!-- /. ROW  -->
+
+
+                    <!-- /. ROW  -->
+                </div>
+                <!-- /. PAGE INNER  -->
+            </div>
+        </div>
+    </div>
+
+
+    <!-- /. PAGE WRAPPER  -->
+
+{% endblock %}
+
+

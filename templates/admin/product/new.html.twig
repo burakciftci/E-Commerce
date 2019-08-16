@@ -1,0 +1,33 @@
+{% extends 'adminbase.html.twig' %}
+
+{% block title %}Ürün Ekleme{% endblock %}
+
+{% block content %}
+
+    <div id="page-wrapper" >
+        <div id="page-inner">
+            <div class="row">
+                <div class="col-md-12">
+                    <h2>Ürün Ekleme</h2>
+
+                    {{ include('admin/product/_form.html.twig') }}
+                    <script>
+                        ClassicEditor
+                            .create(document.querySelector('#detail'))
+                            .catch(error => {
+                                console.error(error)
+
+                            })
+                    </script>
+
+                    <a href="{{ path('admin_product_index') }}">back to list</a>
+                    <!-- /. ROW  -->
+                    <hr />
+                    <!-- /. ROW  -->
+                </div>
+                <!-- /. PAGE INNER  -->
+            </div>
+        </div>
+    </div>
+    <!-- /. PAGE WRAPPER  -->
+{% endblock %}

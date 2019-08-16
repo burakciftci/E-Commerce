@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="utf-8">
+    <title>{% block title %}Hello {{ controller_name }}{% endblock %}</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <!--[if ie]><meta content='IE=8' http-equiv='X-UA-Compatible'/><![endif]-->
+    <!-- bootstrap -->
+    <link href="{{ asset('bootstrap') }}/css/bootstrap.min.css" rel="stylesheet">
+    <link href="{{ asset('bootstrap') }}/css/bootstrap-responsive.min.css" rel="stylesheet">
+
+    <link href="{{ asset('themes') }}/css/bootstrappage.css" rel="stylesheet"/>
+
+    <!-- global styles -->
+    <link href="{{ asset('themes') }}/css/flexslider.css" rel="stylesheet"/>
+    <link href="{{ asset('themes') }}/css/main.css" rel="stylesheet"/>
+
+    <!-- scripts -->
+    <script src="{{ asset('themes') }}/js/jquery-1.7.2.min.js"></script>
+    <script src="{{ asset('bootstrap') }}/js/bootstrap.min.js"></script>
+    <script src="{{ asset('themes') }}/js/superfish.js"></script>
+    <script src="{{ asset('themes') }}/js/jquery.scrolltotop.js"></script>
+    <!--[if lt IE 9]>
+    <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+    <script src="js/respond.min.js"></script>
+    <![endif]-->
+</head>
+<body>
+<div id="top-bar" class="container">
+    <div class="row">
+        <div class="span4">
+            <a href="{{ path('home') }}" class="logo pull-left"><img src="{{ asset('themes') }}/images/logo2.jpg"  alt=""></a>
+
+        </div>
+
+
+        <nav id="menu" class="pull-right">
+            {% if is_granted('IS_AUTHENTICATED_FULLY') %}
+            <ul>
+                <li><a href="#">{{ app.user.name }}</a>
+                    <ul>
+                        <li><a href="{{ path('app_login') }}">Hesabım</a></li>
+                        <li><a href="{{ path('app_logout') }}">Çıkış Yap</a></li>
+                        {% else %}
+                        <ul>
+                            <li><a href="#">LOGIN</a>
+                                <ul>
+                                    <li><a href="{{ path('app_login') }}">Giriş Yap</a></li>
+                                    <li><a href="{{ path('new_user') }}">Üye Ol</a></li>
+
+                                    </li>
+                                </ul>
+                                {% endif %}
+                        </ul>
+                    </ul>
+
+            </ul>
+        </nav>
+
+    </div>
+</div>
+
+{% block sidebar %} {% endblock %}
+{% block body %}{% endblock %}
+{% block slider %} {% endblock %}
+{% block content %} {% endblock %}
+
+<section id="footer-bar">
+    <div class="row">
+        <div class="span3">
+            <h4>SİTE PUSULASI</h4>
+            <ul class="nav">
+                <li><a href="{{ path('home') }}">Anasayfa</a></li>
+                <li><a href="{{ path('hakkimizda') }}">Hakkımızda</a></li>
+                <li><a href="{{ path('iletisim') }}">İletişim</a></li>
+
+
+            </ul>
+        </div>
+        <div class="span4">
+            <h4>Hesabım</h4>
+            <ul class="nav">
+                <li><a href="{{ path('userpanel') }}">Senin Bilgilerin</a></li>
+                <li><a href="{{ path('userpanel_edit') }}">Profilini Düzenle</a></li>
+                <li><a href="{{ path('orders_index') }}">Siparişlerin</a></li>
+            </ul>
+        </div>
+        <div class="span5">
+            <br/>
+            <span class="social_icons">
+							<a class="facebook" href="#">Facebook</a>
+							<a class="twitter" href="#">Twitter</a>
+							<a class="skype" href="#">Skype</a>
+							<a class="vimeo" href="#">Vimeo</a>
+						</span>
+        </div>
+    </div>
+</section>
+<section id="copyright">
+    <span>Created BY BurakCIFTCI.</span>
+</section>
+</div>
+<script src="{{ asset('themes') }}/js/common.js"></script>
+<script src="{{ asset('themes') }}/js/jquery.flexslider-min.js"></script>
+<script type="text/javascript">
+    $(function() {
+        $(document).ready(function() {
+            $('.flexslider').flexslider({
+                animation: "fade",
+                slideshowSpeed: 4000,
+                animationSpeed: 600,
+                controlNav: false,
+                directionNav: true,
+                controlsContainer: ".flex-container" // the container that holds the flexslider
+            });
+        });
+    });
+</script>
+
+</body>
+</html>
+

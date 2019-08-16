@@ -1,0 +1,33 @@
+{% extends 'adminbase.html.twig' %}
+
+{% block title %}Kategori Düzenle{% endblock %}
+
+{% block content %}
+
+<div id="page-wrapper" >
+    <div id="page-inner">
+        <div class="row">
+            <div class="col-md-12">
+
+
+            {{ include('admin/category/_form.html.twig', {'button_label': 'Güncelle'}) }}
+
+            <a href="{{ path('admin_category_index') }}">Listeye Dön</a>
+
+            {{ include('admin/category/_delete_form.html.twig') }}
+
+            <!-- /. ROW  -->
+            <hr />
+
+            <!-- /. ROW  -->
+           </div>
+        <!-- /. PAGE INNER  -->
+        </div>
+    </div>
+</div>
+
+
+    <!-- /. PAGE WRAPPER  -->
+
+    {% endblock %}
+

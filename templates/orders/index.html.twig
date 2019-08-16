@@ -1,0 +1,74 @@
+{% extends 'frontbase.html.twig' %}
+
+
+{% block title %}SİPARİŞ LİSTESİ{% endblock %}
+
+
+{% block sidebar %} {{ include('home/_sidebar.html.twig') }} {% endblock %}
+
+
+
+{% block body %}
+
+    <div class="row-fluid">
+        <div class="span9">
+
+            <div class="span4">
+
+                {% block usersidebar %} {{ include('home/_usersidebar.html.twig') }} {% endblock %}
+            </div>
+
+            <div class="span5">
+                <h5>SİPARİŞ LİSTE</h5>
+                {{ include('messages.html.twig') }}
+
+                <table class="table">
+                    <thead>
+                    <tr>
+
+                        <th>Name</th>
+                        <th>Amount</th>
+                        <th>Address</th>
+                        <th>City</th>
+                        <th>Phone</th>
+                        <th>Shipinfo</th>
+
+                        <th>Status</th>
+                        <th>actions</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    {% for order in orders %}
+                        <tr>
+
+                            <td>{{ order.name }}</td>
+                            <td>{{ order.amount }}</td>
+
+                            <td>{{ order.address }}</td>
+                            <td>{{ order.city }}</td>
+                            <td>{{ order.phone }}</td>
+                            <td>{{ order.shipinfo }}</td>
+
+                            <td>{{ order.status }}</td>
+
+                            <td>
+                                <a href="{{ path('orders_show', {'id': order.id}) }}">GÖSTER</a>
+                            </td>
+                        </tr>
+                    {% else %}
+                        <tr>
+                            <td colspan="11">no records found</td>
+                        </tr>
+                    {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+
+            <div class="row-fluid"></div>
+        </div>
+    </div>
+
+
+
+{% endblock %}
+
